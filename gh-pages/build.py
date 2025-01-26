@@ -20,13 +20,13 @@ def wait_for_server(url, timeout=5):
 # Get directories
 gh_pages_dir = Path(__file__).parent
 src_dir = gh_pages_dir / 'src'
-html_dir = gh_pages_dir / 'html'
+docs_dir = gh_pages_dir.parent / 'docs' # Changed to root docs folder
 
-# Clean and recreate html directory with same structure
-if html_dir.exists():
-    rmtree(html_dir)
-html_dir.mkdir(exist_ok=True)
-(html_dir / 'public').mkdir(exist_ok=True)
+# Clean and recreate docs directory with same structure
+if docs_dir.exists():
+    rmtree(docs_dir)
+docs_dir.mkdir(exist_ok=True)
+(docs_dir / 'public').mkdir(exist_ok=True)
 
 # Start the FastHTML server from src directory
 server = subprocess.Popen(
@@ -44,16 +44,16 @@ try:
     response = httpx.get("http://localhost:5001")
     
     # Save the HTML
-    (html_dir / 'index.html').write_text(response.text)
+    (docs_dir / 'index.html').write_text(response.text)
     
     # Copy static assets maintaining structure
     if (src_dir / 'public').exists():
         for item in (src_dir / 'public').glob('*'):
             if item.is_file():
-                dest = html_dir / 'public' / item.name
+                dest = docs_dir / 'public' / item.name
                 dest.write_bytes(item.read_bytes())
             else:
-                copytree(item, html_dir / 'public' / item.name)
+                copytree(item, docs_dir / 'public' / item.name)
 
 finally:
     server.send_signal(signal.SIGTERM)
