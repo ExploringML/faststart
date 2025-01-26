@@ -633,6 +633,9 @@
   .bg-gray-800 {
     background-color: var(--color-gray-800);
   }
+  .bg-indigo-50 {
+    background-color: var(--color-indigo-50);
+  }
   .bg-pink-300 {
     background-color: var(--color-pink-300);
   }
@@ -765,6 +768,9 @@
   }
   .text-indigo-500 {
     color: var(--color-indigo-500);
+  }
+  .text-indigo-600 {
+    color: var(--color-indigo-600);
   }
   .text-red-400 {
     color: var(--color-red-400);
