@@ -71,10 +71,10 @@ def HtmxIcon():
 def TailwindIcon():
     return NotStr("""<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32"><title>file_type_tailwind</title><path d="M9,13.7q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q11.1,10.9,9,13.7ZM2,22.1q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q4.1,19.3,2,22.1Z" style="fill:#44a8b3"/></svg>""")
 
-def Badge(text, color="indigo", icon=None, svg=None):
+def Badge(text, icon=None, svg=None):
     return Span(
         *([Span(svg, cls="inline-flex items-center relative -mt-[1px]")] if svg else [icon, " "] if icon else []) + [text],
-        cls=f"inline-flex items-center gap-1 px-4 h-[35px] text-sm font-medium text-{color}-600 bg-{color}-50 rounded-full"
+        cls=f"inline-flex items-center gap-1 px-4 h-[35px] text-sm font-medium text-indigo-600 bg-indigo-50 rounded-full"
     )
 
 def HeroBadges():
