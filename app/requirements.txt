@@ -1,0 +1,4 @@
+pytailwindcss==0.2.0
+sqlite-web==0.6.4
+python-fasthtml
+jupyterlab
